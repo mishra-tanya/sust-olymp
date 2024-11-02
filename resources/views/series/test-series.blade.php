@@ -80,9 +80,28 @@
     <br>
     <div class="container">
         <h1 class="title">Olympiad For</h1>
-        <h1 class="title">{{ ucfirst(str_replace('-', ' ', $classSlug)) }} Test Series</h1>
-        <hr>
 
+        @php
+        $classname="";
+        if ( $classSlug=="class_4-5") {
+                $classname="Class 4-5";
+        }
+        else if ($classSlug=="class_6-8") {
+            $classname="Class 6-8";
+        }
+        else if ($classSlug=="class_9-10") {
+            $classname="Class 9-10";
+        }
+        else if ($classSlug=="class_11-12") {
+            $classname="Class 11-12";
+        }
+ 
+             
+    @endphp
+        <h1 class="title">{{ ucfirst(  $classname) }} Test Series</h1>
+        <hr>
+@include('series.graphs')
+        <hr>
         <!-- Grid for class series -->
         <div class="grid-container">
             @foreach($classData as $class)

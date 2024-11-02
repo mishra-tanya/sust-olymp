@@ -70,6 +70,30 @@
         .grid-container > :nth-last-child(1) {
             grid-column: 2; 
         }
+        .wave {
+    font-size: 1.5rem; /* Adjust the size as needed */
+    display: inline-block;
+    transform-origin: 70% 70%; /* Adjust pivot point for realistic waving */
+    transition: transform 0.3s; /* Smooth zoom-out transition */
+    animation: wave 2s ease-in-out ; /* Animation for the initial wave on page load */
+}
+
+@keyframes wave {
+    0% { transform: rotate(0deg); }
+    10% { transform: rotate(14deg); }
+    20% { transform: rotate(-8deg); }
+    30% { transform: rotate(14deg); }
+    40% { transform: rotate(-4deg); }
+    50% { transform: rotate(10deg); }
+    60% { transform: rotate(0deg); }
+    100% { transform: rotate(0deg); }
+}
+
+/* Animation on hover */
+.wave:hover {
+    transform: scale(1.2) rotate(12deg); /* Slightly zoom out and rotate */
+}
+
     </style>
 </head>
 <body>
@@ -81,16 +105,17 @@
     <br><br>
     <br>
     <div class="container">
-        <h1 class="title">Olympiad Series</h1>
-        <h1>For Various Classes</h1>
-        <br><hr><br>
-
+        <p><div class="wave">👋</div>
+            Hi, <b>{{Auth::user()->name}}</b></p>
+        <h1 class="title">Here's Olympiad Series <br>
+            For Various Classes</h1>
+        <hr><br>
         <!-- Grid for class series -->
         <div class="grid-container">
             @php
                 $classData = [
-                    ['name' => 'FOR CLASS 5-6', 'image' => 'assets/img/event-gallery/event-gallery-2.jpg', 'url' => 'olympiad/class_4-5'],
-                    ['name' => 'FOR CLASS 7-8', 'image' => 'assets/img/event-gallery/event-gallery-3.jpg', 'url' => 'olympiad/class_6-8'],
+                    ['name' => 'FOR CLASS 4-5', 'image' => 'assets/img/event-gallery/event-gallery-2.jpg', 'url' => 'olympiad/class_4-5'],
+                    ['name' => 'FOR CLASS 6-8', 'image' => 'assets/img/event-gallery/event-gallery-3.jpg', 'url' => 'olympiad/class_6-8'],
                     ['name' => 'FOR CLASS 9-10', 'image' => 'assets/img/event-gallery/event-gallery-4.jpg', 'url' => 'olympiad/class_9-10'],
                     ['name' => 'FOR CLASS 11-12', 'image' => 'assets/img/event-gallery/event-gallery-5.jpg', 'url' => 'olympiad/class_11-12'],
                 ];
